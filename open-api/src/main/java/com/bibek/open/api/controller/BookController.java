@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/book")
 public class BookController {
@@ -18,7 +20,6 @@ public class BookController {
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
-
     @Operation(summary = "This is used to fetch all the Books stored in Db")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
@@ -33,7 +34,7 @@ public class BookController {
     })
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Book getAllBook(){
+    public List<Book> getAllBook(){
         return bookService.getAllBook();
     }
 

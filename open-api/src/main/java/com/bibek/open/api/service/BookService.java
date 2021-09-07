@@ -6,6 +6,8 @@ import com.bibek.open.api.model.Book;
 import com.bibek.open.api.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookService {
 
@@ -16,8 +18,8 @@ public class BookService {
     }
 
 
-    public Book getAllBook() {
-        return (Book) bookRepository.findAll();
+    public List<Book> getAllBook() {
+        return  bookRepository.findAll();
     }
 
     public Book saveBook(Book book) {
