@@ -12,7 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .antMatcher("/**").authorizeRequests()
-                .antMatchers("/facebook").permitAll()
+                .antMatchers("/").permitAll()
                 .anyRequest().authenticated().and()
                 .oauth2Login();
     }
