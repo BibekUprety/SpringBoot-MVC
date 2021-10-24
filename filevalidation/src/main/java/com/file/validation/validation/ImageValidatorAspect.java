@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 
@@ -35,12 +36,21 @@ public class ImageValidatorAspect implements ConstraintValidator<ValidateImage, 
 //                context.buildConstraintViolationWithTemplate(constraintMessage).addConstraintViolation();
 //                return false;
 //            }
-            if (pattern.matcher(extension).matches()){
-                return true;
-            }
-            else{
-                return false;
-            }
+
+            /* this in imperative method*/
+//            if (pattern.matcher(extension).matches()){
+//                return true;
+//            }
+//            else{
+//
+//                context.disableDefaultConstraintViolation();
+//                context.buildConstraintViolationWithTemplate(constraintMessage).addConstraintViolation();
+//                return false;
+//            }
+
+            /*This is by using the predicate function*/
+            Predicate<MultipartFile> str= patt -> pattern.matcher(extension).matches();
+            return str.test(multipartFile);
 
 
         }
