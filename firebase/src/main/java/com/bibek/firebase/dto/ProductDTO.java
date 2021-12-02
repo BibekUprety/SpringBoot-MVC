@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+
 /**
  * @author bibek
  * @project firebase
@@ -18,6 +20,9 @@ public class ProductDTO {
     private Integer id;
     private String name;
     private String address;
+    private MultipartFile image;
 
-    private MultipartFile imageUrl;
+    private MultipartFile imagesBytes;
+
+//    private MultipartFile imageUrl;
 }

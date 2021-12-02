@@ -1,34 +1,32 @@
-package com.bibek.firebase.models;
+package com.bibek.excel.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 
 /**
  * @author bibek
- * @project firebase
- * @project 28/10/2021 - 7:11 AM
+ * @project excel
+ * @project 30/11/2021 - 11:50 AM
  **/
-@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Builder
-public class Product {
+public class CustomerAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String name;
-    private String address;
 
-    @Lob
-    private String image;
+    private String cname;
+    private String caddress;
 
+    @ManyToOne
+    private Customer customer;
 
-    @Lob
-    private byte[] imageBytes;
-//    private String imageUrl;
 }
